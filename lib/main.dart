@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice36_hw2/screens/login_screen.dart';
+import 'package:flutter_practice36_hw2/screens/retry_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,9 +20,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginScreen(),
+      home: const RetryScreen(),
       routes: {
         LoginScreen.id: (context) => const LoginScreen(),
+        RetryScreen.id: (context) => const RetryScreen(),
       },
     );
   }
