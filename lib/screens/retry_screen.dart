@@ -62,7 +62,7 @@ class _RetryScreenState extends State<RetryScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Text(
-                      "Oops Try Again",
+                      "Oops! Try Again",
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 33,
