@@ -1,16 +1,42 @@
 import 'package:flutter/material.dart';
 
-class ViewAccount extends StatefulWidget {
+class ViewAccountScreen extends StatefulWidget {
   static const String id = "view_account_screen";
-  const ViewAccount({
+  const ViewAccountScreen({
     super.key,
   });
 
   @override
-  State<ViewAccount> createState() => _ViewAccountState();
+  State<ViewAccountScreen> createState() => _ViewAccountScreenState();
 }
 
-class _ViewAccountState extends State<ViewAccount> {
+class _ViewAccountScreenState extends State<ViewAccountScreen> {
+  int _currentIndex = 0;
+  Widget _buttonMaker(String content) {
+    return Container(
+        height: 80,
+        width: double.infinity,
+        margin: const EdgeInsets.only(bottom: 18),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.black,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black.withOpacity(0.18),
+                  blurRadius: 15,
+                  offset: const Offset(0, 0))
+            ]),
+        child: TextButton(
+            onPressed: () {},
+            child: Text(
+              content,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold),
+            )));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,76 +70,47 @@ class _ViewAccountState extends State<ViewAccount> {
               const SizedBox(
                 height: 38,
               ),
-              Container(
-                  height: 90,
-                  width: double.infinity,
-                  margin: const EdgeInsets.only(bottom: 15),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.black,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.18),
-                            blurRadius: 15,
-                            offset: const Offset(0, 0))
-                      ]),
-                  child: TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "Check Account",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                      ))),
-              Container(
-                  height: 90,
-                  width: double.infinity,
-                  margin: const EdgeInsets.only(bottom: 25),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.black,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.18),
-                            blurRadius: 15,
-                            offset: const Offset(0, 0))
-                      ]),
-                  child: TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "Switch Account",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                      ))),
-              Container(
-                  height: 90,
-                  width: double.infinity,
-                  margin: const EdgeInsets.only(bottom: 25),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.black,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.18),
-                            blurRadius: 15,
-                            offset: const Offset(0, 0))
-                      ]),
-                  child: TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "Credit Card Balance",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                      )))
+              _buttonMaker("Check Account"),
+              _buttonMaker("Switch Account"),
+              _buttonMaker("Credit Card Balance"),
             ],
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.black,
+          onTap: (value) {
+            setState(() {
+              _currentIndex = value;
+            });
+          },
+          currentIndex: _currentIndex,
+          backgroundColor: Colors.white,
+          elevation: 35,
+          items: const [
+            BottomNavigationBarItem(
+                label: "Number",
+                icon: Icon(
+                  Icons.phone,
+                  size: 32,
+                  color: Colors.black,
+                )),
+            BottomNavigationBarItem(
+                label: "Menu",
+                icon: Icon(
+                  Icons.menu,
+                  size: 32,
+                  color: Colors.black,
+                )),
+            BottomNavigationBarItem(
+                label: "Location",
+                icon: Icon(
+                  Icons.location_on,
+                  size: 32,
+                  color: Colors.black,
+                ))
+          ]),
     );
   }
 }

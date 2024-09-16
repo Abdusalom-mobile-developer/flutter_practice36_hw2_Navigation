@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practice36_hw2/screens/login_screen.dart';
 import 'package:flutter_practice36_hw2/screens/retry_screen.dart';
 import 'package:flutter_practice36_hw2/screens/view_account.dart';
+import 'package:flutter_practice36_hw2/screens/view_card_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,14 +22,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const ViewAccount(),
+      home: const ViewCardScreen(),
       routes: {
         LoginScreen.id: (context) => const LoginScreen(),
         RetryScreen.id: (context) => const RetryScreen(),
-        ViewAccount.id: (context) => const ViewAccount(),
+        ViewAccountScreen.id: (context) => const ViewAccountScreen(),
+        ViewCardScreen.id: (context) => const ViewCardScreen(),
       },
     );
   }
 }
-
-
