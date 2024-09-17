@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice36_hw2/screens/login_screen.dart';
+import 'package:flutter_practice36_hw2/screens/reset_password_screen.dart';
+import 'package:flutter_practice36_hw2/screens/reset_password_verified_screen.dart';
 import 'package:flutter_practice36_hw2/screens/retry_screen.dart';
 import 'package:flutter_practice36_hw2/screens/view_account.dart';
 import 'package:flutter_practice36_hw2/screens/view_card_screen.dart';
@@ -22,12 +24,15 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const ViewCardScreen(),
+      home: const ResetPasswordVerifiedScreen(),
       routes: {
         LoginScreen.id: (context) => const LoginScreen(),
         RetryScreen.id: (context) => const RetryScreen(),
         ViewAccountScreen.id: (context) => const ViewAccountScreen(),
         ViewCardScreen.id: (context) => const ViewCardScreen(),
+        ResetPasswordScreen.id: (context) => const ResetPasswordScreen(),
+        ResetPasswordVerifiedScreen.id: (context) =>
+            const ResetPasswordVerifiedScreen(),
       },
     );
   }
