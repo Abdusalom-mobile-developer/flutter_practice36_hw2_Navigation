@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice36_hw2/screens/login_screen.dart';
+import 'package:flutter_practice36_hw2/screens/re_enter_email_screen.dart';
+import 'package:flutter_practice36_hw2/screens/register_screen.dart';
 import 'package:flutter_practice36_hw2/screens/reset_password_screen.dart';
 import 'package:flutter_practice36_hw2/screens/reset_password_verified_screen.dart';
 import 'package:flutter_practice36_hw2/screens/retry_screen.dart';
@@ -24,7 +26,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const ResetPasswordVerifiedScreen(),
+      home: const RegisterScreen(),
       routes: {
         LoginScreen.id: (context) => const LoginScreen(),
         RetryScreen.id: (context) => const RetryScreen(),
@@ -33,6 +35,8 @@ class _MyAppState extends State<MyApp> {
         ResetPasswordScreen.id: (context) => const ResetPasswordScreen(),
         ResetPasswordVerifiedScreen.id: (context) =>
             const ResetPasswordVerifiedScreen(),
+        ReEnterEmailScreen.id: (context) => const ReEnterEmailScreen(),
+        RegisterScreen.id: (context) => const RegisterScreen(),
       },
     );
   }
