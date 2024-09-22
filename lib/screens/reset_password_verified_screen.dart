@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice36_hw2/screens/login_screen.dart';
 
 class ResetPasswordVerifiedScreen extends StatefulWidget {
   static const String id = "reset_password_verified_screen";
@@ -13,6 +14,7 @@ class ResetPasswordVerifiedScreen extends StatefulWidget {
 
 class _ResetPasswordVerifiedScreenState
     extends State<ResetPasswordVerifiedScreen> {
+  bool _hasError = false;
   final TextEditingController _newUsernameController = TextEditingController();
   final TextEditingController _newPasswordController = TextEditingController();
 
@@ -101,9 +103,33 @@ class _ResetPasswordVerifiedScreenState
                       height: 10,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        Row(
+                          children: [
+                            Text(
+                                textAlign: TextAlign.end,
+                                _hasError ? "Try Again" : "",
+                                style: TextStyle(
+                                    color: Colors.red[900],
+                                    fontSize: 23,
+                                    fontWeight: FontWeight.bold)),
+                            const SizedBox(
+                              width: 3,
+                            ),
+                            _hasError
+                                ? Icon(
+                                    Icons.error_outline_rounded,
+                                    color: Colors.red[900],
+                                    size: 27,
+                                  )
+                                : const Icon(
+                                    Icons.percent,
+                                    color: Colors.transparent,
+                                  )
+                          ],
+                        ),
                         Container(
                             height: 55,
                             width: MediaQuery.of(context).size.width / 2.5,
@@ -117,7 +143,33 @@ class _ResetPasswordVerifiedScreenState
                                       offset: const Offset(0, 0))
                                 ]),
                             child: TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  if (_newUsernameController.text
+                                              .trim()
+                                              .length >
+                                          7 &&
+                                      _newPasswordController.text
+                                              .trim()
+                                              .length >
+                                          6) {
+                                    setState(() {
+                                      _hasError = false;
+                                    });
+
+                                    LoginScreen.username =
+                                        _newUsernameController.text.trim();
+                                    LoginScreen.password =
+                                        _newPasswordController.text.trim();
+                                    Navigator.pushReplacementNamed(
+                                        context, LoginScreen.id);
+                                  } else {
+                                    setState(() {
+                                      _hasError = true;
+                                      _newUsernameController.clear();
+                                      _newPasswordController.clear();
+                                    });
+                                  }
+                                },
                                 child: const Text(
                                   "Login",
                                   style: TextStyle(

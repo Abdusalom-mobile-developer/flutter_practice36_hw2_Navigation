@@ -9,7 +9,7 @@ import 'package:flutter_practice36_hw2/screens/view_account.dart';
 import 'package:flutter_practice36_hw2/screens/view_card_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const RegisterScreen(),
+      home: const LoginScreen(),
       routes: {
         LoginScreen.id: (context) => const LoginScreen(),
         RetryScreen.id: (context) => const RetryScreen(),

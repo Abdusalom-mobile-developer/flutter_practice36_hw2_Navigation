@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice36_hw2/screens/retry_screen.dart';
+import 'package:flutter_practice36_hw2/screens/view_account.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = "login_screen";
+  static String email = "Abdusalom7@gmail.com";
+  static String username = "Abdusalom";
+  static String password = "freedom";
   const LoginScreen({
     super.key,
   });
@@ -76,7 +81,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                   offset: const Offset(0, 0))
                             ]),
                         child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (_usernameController.text.trim() ==
+                                      LoginScreen.username &&
+                                  _passwordController.text.trim() ==
+                                      LoginScreen.password) {
+                                Navigator.pushReplacementNamed(
+                                    context, ViewAccountScreen.id);
+                              } else {
+                                Navigator.pushReplacementNamed(
+                                    context, RetryScreen.id);
+                              }
+                            },
                             child: const Text(
                               "Login",
                               style:

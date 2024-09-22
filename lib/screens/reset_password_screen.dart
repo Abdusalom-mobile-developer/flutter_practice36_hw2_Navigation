@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice36_hw2/screens/login_screen.dart';
+import 'package:flutter_practice36_hw2/screens/re_enter_email_screen.dart';
+import 'package:flutter_practice36_hw2/screens/reset_password_verified_screen.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   static const String id = "reset_password_screen";
@@ -102,7 +105,16 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                       offset: const Offset(0, 0))
                                 ]),
                             child: TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  if (_emailController.text.trim() ==
+                                      LoginScreen.email) {
+                                    Navigator.pushReplacementNamed(context,
+                                        ResetPasswordVerifiedScreen.id);
+                                  } else {
+                                    Navigator.pushReplacementNamed(
+                                        context, ReEnterEmailScreen.id);
+                                  }
+                                },
                                 child: const Text(
                                   "Check",
                                   style: TextStyle(

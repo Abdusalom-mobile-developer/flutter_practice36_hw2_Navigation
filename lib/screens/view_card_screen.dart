@@ -58,12 +58,17 @@ class _ViewCardScreenState extends State<ViewCardScreen> {
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
-                      "Credit Card Balance",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Credit Card Balance",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     )
                   ],
                 ),
@@ -100,7 +105,7 @@ class _ViewCardScreenState extends State<ViewCardScreen> {
                             ),
                             Transform.rotate(
                               angle: 1.7,
-                              child: Icon(
+                              child: const Icon(
                                 Icons.wifi,
                                 size: 34,
                               ),

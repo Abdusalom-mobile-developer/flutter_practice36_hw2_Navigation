@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="flutter_practice36_hw2"
+        android:label="Login Moto"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice36_hw2/screens/login_screen.dart';
+import 'package:flutter_practice36_hw2/screens/view_card_screen.dart';
 
 class ViewAccountScreen extends StatefulWidget {
   static const String id = "view_account_screen";
@@ -11,8 +13,8 @@ class ViewAccountScreen extends StatefulWidget {
 }
 
 class _ViewAccountScreenState extends State<ViewAccountScreen> {
-  int _currentIndex = 0;
-  Widget _buttonMaker(String content) {
+  int _currentIndex = 1;
+  Widget _buttonMaker(String content, void Function()? function) {
     return Container(
         height: 80,
         width: double.infinity,
@@ -27,7 +29,7 @@ class _ViewAccountScreenState extends State<ViewAccountScreen> {
                   offset: const Offset(0, 0))
             ]),
         child: TextButton(
-            onPressed: () {},
+            onPressed: function,
             child: Text(
               content,
               style: const TextStyle(
@@ -54,25 +56,34 @@ class _ViewAccountScreenState extends State<ViewAccountScreen> {
               ),
               Transform.translate(
                 offset: const Offset(0, -30),
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "Account",
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 40,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "Hello ${LoginScreen.username}!",
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 22,
                           fontWeight: FontWeight.bold),
                     )
                   ],
                 ),
               ),
               const SizedBox(
-                height: 38,
+                height: 14,
               ),
-              _buttonMaker("Check Account"),
-              _buttonMaker("Switch Account"),
-              _buttonMaker("Credit Card Balance"),
+              _buttonMaker("Check Account", null),
+              _buttonMaker("Switch Account", null),
+              _buttonMaker("Credit Card Balance", () {
+                Navigator.pushNamed(context, ViewCardScreen.id);
+              }),
             ],
           ),
         ),

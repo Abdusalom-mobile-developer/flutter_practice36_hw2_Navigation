@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice36_hw2/screens/login_screen.dart';
+import 'package:flutter_practice36_hw2/screens/reset_password_screen.dart';
+import 'package:flutter_practice36_hw2/screens/view_account.dart';
 
 class RetryScreen extends StatefulWidget {
   static const String id = "retry_screen";
@@ -78,7 +81,7 @@ class _RetryScreenState extends State<RetryScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "Atempt: $_attemptCount/3",
+                          "Atempt: ${_attemptCount > 3 ? 3 : _attemptCount}/3",
                           style: const TextStyle(
                               color: Colors.black,
                               fontSize: 18,
@@ -97,7 +100,25 @@ class _RetryScreenState extends State<RetryScreen> {
                                       offset: const Offset(0, 0))
                                 ]),
                             child: TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  if (_usernameController.text.trim() ==
+                                          LoginScreen.username &&
+                                      _passwordController.text.trim() ==
+                                          LoginScreen.password) {
+                                    Navigator.pushReplacementNamed(
+                                        context, ViewAccountScreen.id);
+                                  } else {
+                                    setState(() {
+                                      _attemptCount++;
+                                      _usernameController.clear();
+                                      _passwordController.clear();
+                                    });
+                                    if (_attemptCount > 3) {
+                                      Navigator.pushReplacementNamed(
+                                          context, ResetPasswordScreen.id);
+                                    }
+                                  }
+                                },
                                 child: const Text(
                                   "Try Again",
                                   style: TextStyle(
